@@ -75,6 +75,7 @@ function DeleteAccount() {
             };
             setShow(false);
 
+
             // see authentication with Firebase lecture videos and https://firebase.google.com/docs/auth/web/manage-users#web_23
 
             const auth = getAuth();
@@ -87,19 +88,7 @@ function DeleteAccount() {
               console.error('Error code: ' + error.code); // error deleting user from Firebase
               console.error('Error message: ' + error.message); // error deleting user from Firebase
               });
-          } else {
-              setStatus(data.content); // "You must empty your account first!"
-              setTimeout(() => setStatus(""), 5000);
-          }
-          console.log(data.content); // console log message from the server.
-          }
-          
-         catch (error) {
-          console.error(error.message); // error communicating with the server.
-        }
-
-      })();
-      (async function disconnectFromDatabase () {
+                (async function disconnectFromDatabase () {
 
         try {
           const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
@@ -114,6 +103,19 @@ function DeleteAccount() {
             console.error(error.message); // error authenticating with the server 
           }
         })();
+          } else {
+              setStatus(data.content); // "You must empty your account first!"
+              setTimeout(() => setStatus(""), 5000);
+          }
+          console.log(data.content); // console log message from the server.
+          }
+          
+         catch (error) {
+          console.error(error.message); // error communicating with the server.
+        }
+
+      })();
+    
     }
 
     function clearForm() {
