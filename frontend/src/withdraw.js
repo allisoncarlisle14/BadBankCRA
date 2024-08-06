@@ -51,7 +51,8 @@ function Withdraw() {
       (async function updateData () {
         const info = {email: ctx.currentUser.email, amount: numberWithdraw, token: token};
         //const requestBody = {email: ctx.currentUser.email, amount: numberWithdraw, token: token}
-        const url = `http://localhost:4000/account/withdraw`;
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+        const url = backendUrl + `/account/withdraw`;
   
         
         try {

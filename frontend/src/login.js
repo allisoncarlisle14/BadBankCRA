@@ -90,7 +90,8 @@ function Login() {
   
           (async function getData () {
             const info = {email: email, password: password};
-            const url = `http://localhost:4000/account/login`;
+            const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+            const url = backendUrl + `/account/login`;
   
           try {
               const response = await Axios.get(url, {params: info});
@@ -150,7 +151,8 @@ function Login() {
       (async function disconnectFromDatabase () {
 
       try {
-        const url = `http://localhost:4000/account/logout`;
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+        const url = backendUrl + `/account/logout`;
           const response = await Axios.get(url);
           const data = await response.data;
           

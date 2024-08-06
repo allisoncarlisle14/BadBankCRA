@@ -25,7 +25,8 @@ function AllData() {
       (async function getData () {
         //const requestBody = {token: token};
         const info = {token: token};
-        const url = `http://localhost:4000/account/all`;
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+        const url = backendUrl + `/account/all`;
       // The default method is GET, but you can't include a body with GET, which is why the method is POST.
         
       try {
@@ -60,7 +61,8 @@ function AllData() {
       (async function getData () {
         // const requestBody = {token: token}
         const info = {token: token};
-        const url = `http://localhost:4000/transactions/all`;
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+        const url = backendUrl + `/transactions/all`;
   
         try {
         const response = await Axios.get(url, {params: info});

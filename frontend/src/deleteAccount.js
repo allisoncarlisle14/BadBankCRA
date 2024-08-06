@@ -55,7 +55,8 @@ function DeleteAccount() {
       (async function deleteData() {
         //const requestBody = {email: ctx.currentUser.email, token: token}
         const info = {email: ctx.currentUser.email, token: token};
-        const url = `http://localhost:4000/account/delete`;
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+        const url = backendUrl + `/account/delete`;
 
         try {
             const response = await Axios.get(url, {params: info});
@@ -101,7 +102,8 @@ function DeleteAccount() {
       (async function disconnectFromDatabase () {
 
         try {
-          const url = `http://localhost:4000/account/logout`;
+          const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+          const url = backendUrl + `/account/logout`;
             const response = await Axios.get(url);
             const data = await response.data;
             

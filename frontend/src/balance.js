@@ -49,7 +49,8 @@ function Balance() {
       (async function getData () {
         const info = {email: email, token: token};
         //const requestBody = {email: email, token: token}
-        const url = `http://localhost:4000/account/balance`;
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+        const url = backendUrl + `/account/balance`;
   
         try {
             const response = await Axios.get(url, {params: info});
