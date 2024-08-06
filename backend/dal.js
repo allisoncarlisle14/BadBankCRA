@@ -163,9 +163,6 @@ async function create(name, email, password) {
   } catch (err) {
     console.log(err.stack);
   }
-   finally {
-        await client.close(); //////// remove if necessary
-    }
  
   }
   
