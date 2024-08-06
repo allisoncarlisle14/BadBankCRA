@@ -98,6 +98,20 @@ function DeleteAccount() {
         }
 
       })();
+      (async function disconnectFromDatabase () {
+
+        try {
+          const url = `http://localhost:4000/account/logout`;
+            const response = await Axios.get(url);
+            const data = await response.data;
+            
+            console.log(data.content); // console log data from the server
+      
+          }
+            catch (error) {
+            console.error(error.message); // error authenticating with the server 
+          }
+        })();
     }
 
     function clearForm() {

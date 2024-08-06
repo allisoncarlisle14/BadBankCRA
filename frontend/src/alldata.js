@@ -36,7 +36,7 @@ function AllData() {
         //   }
           const data = await response.data;
           data.forEach(entry => delete entry._id);
-          console.log(data); // console log data
+          console.log('the customer data is: ' + data); // console log data
           setAccounts(data);
           
         }
@@ -69,7 +69,7 @@ function AllData() {
         //   }
           const data = await response.data;
           data.forEach(entry => delete entry._id);
-          console.log(data); // console log data
+          console.log('the transaction data is: ' + JSON.stringify(data)); // console log data
           setTransactions(data);
   
         } catch (error) {

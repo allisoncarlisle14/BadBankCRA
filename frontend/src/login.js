@@ -55,7 +55,7 @@ function Login() {
       loggedOutNavTabs.forEach(tab => document.getElementById(tab).style.display = 'none');
       userNavTabs.forEach(tab => document.getElementById(tab).style.display = 'inline');
       
-      if (firebaseUser.email === 'griphook@gringotts.com') {
+      if (firebaseUser.email === 'fury@shield.org') {
         document.getElementById('all-data').style.display = 'inline';
       }
     } else {
@@ -146,6 +146,21 @@ function Login() {
           console.log('Error code: ' + error.code);
           console.log('Error message: ' + error.message);
         })
+
+      (async function disconnectFromDatabase () {
+
+      try {
+        const url = `http://localhost:4000/account/logout`;
+          const response = await Axios.get(url);
+          const data = await response.data;
+          
+          console.log(data.content); // console log data from the server
+    
+        }
+          catch (error) {
+          console.error(error.message); // error authenticating with the server 
+        }
+      })();
     }
   
     const inputFields = [

@@ -98,7 +98,7 @@ function Balance() {
     ];
   
   
-    if (ctx.currentUser.name === 'Griphook') {
+    if (ctx.currentUser.email === 'fury@shield.org') {
       return (
         <>
           <Card

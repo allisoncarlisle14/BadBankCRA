@@ -1,34 +1,3 @@
-// var express = require("express");
-// const app = express();
-
-// var cors = require("cors");
-// var dal = require("./dal.js");
-// const bodyParser = require("body-parser");
-// app.use(bodyParser.json());
-
-
-
-// app.use(cors());
-
-// app.get('/getData', (req, res) => {
-//     res.send("See if this change works");
-// });
-
-// // all transactions
-// app.get("/transactions/all", async function (req, res) {
-  
-//     console.log("attempting to get all transaction data");
-//     const transactions = await dal.allTransactions();
-//     console.log("Data sent to client", transactions); // console log transaction data
-//     res.send(transactions);
-  
-//   });
-
-// app.listen(4000, () => {
-//     console.log("app is running")
-
-// });
-
 var express = require("express");
 const app = express();
 var cors = require("cors");
@@ -38,11 +7,7 @@ app.use(bodyParser.json());
 
 const { generateToken, verifyToken } = require("./utils/jwt.js");
 
-// Never got this authMiddleware function to work. Would like to as an improvement.
-// Would also like to add authorization for different roles. So most people will be users, and then admins can access the account/all and transactions/all routes
 
-
-// this tells the app to serve static files from the public directory
 app.use(cors());
 
 // create account
@@ -75,6 +40,12 @@ app.get("/account/login", async function (req, res) {
   }
   // res.send(response);
   res.json(response);
+});
+
+// logout
+app.get("/account/logout", async function (req, res) {
+  await dal.logout();
+  console.log('Successfully disconnected from MongoDB');
 });
 
 // deposit
@@ -204,6 +175,3 @@ if(port == null || port == "") {
 app.listen(port, function() {
   console.log("Server started successfully");
  });
-// const port = 3000;
-// app.listen(port);
-// console.log("Running on port: 3000!");
